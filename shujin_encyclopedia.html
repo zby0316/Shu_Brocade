@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蜀锦百科 - 千年织锦的文化密码</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #8C1515; /* 蜀锦朱红 */
+      --color-secondary: #4A3728; /* 蜀锦赭石 */
+      --color-accent: #D4AF37; /* 蜀锦金线 */
+      --color-light: #F5F0E1; /* 蜀锦底纹 */
+      --color-dark: #2A231F; /* 文字主色 */
+      --font-inter: 'Inter', sans-serif;
+    }
+    
+    @utility fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @utility slide-up {
+      animation: slideUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .weaving-machine {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .weaving-threads {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: weave 15s linear infinite;
+    }
+    
+    @keyframes weave {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 1000px; }
+    }
+    
+    .pattern-card:hover .pattern-img {
+      transform: scale(1.05);
+    }
+    
+    .pattern-img {
+      transition: transform 0.5s ease;
+    }
+  </style>
+</head>
+<body class="font-inter bg-light text-dark min-h-screen">
+  <!-- 导航栏 -->
+  <nav class="fixed top-0 left-0 right-0 bg-primary/90 text-white z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold flex items-center">
+        <i class="fas fa-thread mr-2"></i>
+        <span>蜀锦百科</span>
+      </a>
+      <div class="hidden md:flex space-x-6">
+        <a href="#history" class="hover:text-accent transition">历史与起源</a>
+        <a href="#craft" class="hover:text-accent transition">工艺与制作</a>
+        <a href="#culture" class="hover:text-accent transition">文化内涵</a>
+      </div>
+      <button class="md:hidden text-xl" id="mobile-menu-button">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="md:hidden hidden bg-primary/95" id="mobile-menu">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <a href="#history" class="py-2 hover:text-accent transition">历史与起源</a>
+        <a href="#craft" class="py-2 hover:text-accent transition">工艺与制作</a>
+        <a href="#culture" class="py-2 hover:text-accent transition">文化内涵</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区 -->
+  <header class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-primary/10 to-light">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-primary mb-4 fade-in">
+        蜀锦 - 东方丝绸的活态史诗
+      </h1>
+      <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-3xl mx-auto mb-8 fade-in" style="animation-delay: 0.2s">
+        穿越两千年的织造智慧，中国四大名锦之首的蜀锦，在经纬交织中诉说着巴蜀文明的璀璨篇章
+      </p>
+      <a href="#history" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary/90 transition slide-up" style="animation-delay: 0.4s">
+        探索蜀锦世界 <i class="fas fa-down ml-2"></i>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 历史与起源部分 -->
+    <section id="history" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center text-primary mb-12 slide-up">
+          <i class="fas fa-history mr-3"></i>历史与起源
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- 起源时间线 -->
+          <div class="bg-light p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.1s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-clock mr-2 text-accent"></i>历史沿革
+            </h3>
+            <div class="space-y-4">
+              <div class="relative pl-6">
+                <div class="absolute left-0 top-1 w-3 h-3 rounded-full bg-primary"></div>
+                <span class="font-medium">春秋战国</span> - 蜀锦起源，成都平原出现早期织造
+              </div>
+              <div class="relative pl-6">
+                <div class="absolute left-0 top-1 w-3 h-3 rounded-full bg-primary"></div>
+                <span class="font-medium">汉唐盛世</span> - "锦官城"得名，蜀锦成为朝廷贡品
+              </div>
+              <div class="relative pl-6">
+                <div class="absolute left-0 top-1 w-3 h-3 rounded-full bg-primary"></div>
+                <span class="font-medium">唐宋繁荣</span> - 发明纬锦技术，图案题材多元化
+              </div>
+              <div class="relative pl-6">
+                <div class="absolute left-0 top-1 w-3 h-3 rounded-full bg-primary"></div>
+                <span class="font-medium">明清衰落</span> - 战乱与工艺失传，蜀锦走向式微
+              </div>
+              <div class="relative pl-6">
+                <div class="absolute left-0 top-1 w-3 h-3 rounded-full bg-primary"></div>
+                <span class="font-medium">现代复兴</span> - 非遗保护工程，传统工艺焕发新生
+              </div>
+            </div>
+          </div>
+          
+          <!-- 别称与象征 -->
+          <div class="bg-light p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.2s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-tags mr-2 text-accent"></i>别称与象征
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-semibold text-accent mb-1">锦官城</h4>
+                <p class="text-gray-700">三国时期蜀汉在成都设置"锦官"管理织锦业，"锦官城"成为成都别称，杜甫诗中"花重锦官城"即指此</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-1">锦里</h4>
+                <p class="text-gray-700">成都武侯祠旁的"锦里"古街，因蜀汉织锦作坊集中于此而得名，现成为蜀文化展示窗口</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-1">寸锦寸金</h4>
+                <p class="text-gray-700">蜀锦工艺复杂耗时，汉唐时期一匹蜀锦价值等同于中等农户全年收入，故有"寸锦寸金"之称</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 丝绸之路 -->
+          <div class="bg-light p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.3s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-map-marked-alt mr-2 text-accent"></i>与丝绸之路
+            </h3>
+            <div class="space-y-4">
+              <p class="text-gray-700">蜀锦通过西南丝绸之路（蜀身毒道）和北方丝绸之路双向传播：</p>
+              <div class="bg-primary/5 p-3 rounded-lg">
+                <h4 class="font-medium text-primary mb-2">西南通道</h4>
+                <p class="text-gray-700">经云南、缅甸至印度，战国时期蜀锦已通过此路传至东南亚，古印度文献记载的"蜀布"即指蜀锦</p>
+              </div>
+              <div class="bg-primary/5 p-3 rounded-lg">
+                <h4 class="font-medium text-primary mb-2">北方通道</h4>
+                <p class="text-gray-700">经长安至西域，唐代蜀锦在敦煌莫高窟壁画中频繁出现，成为中原与西域文化交流的重要载体</p>
+              </div>
+              <p class="text-gray-700">蜀锦的几何纹、联珠纹等图案融合了波斯、希腊艺术元素，展现了古代东西方文明的交融</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工艺与制作技艺部分（重点） -->
+    <section id="craft" class="py-16 md:py-24 bg-light">
+      <div class="container mx-auto px-4">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center text-primary mb-12 slide-up">
+          <i class="fas fa-tools mr-3"></i>工艺与制作技艺
+        </h2>
+        
+        <!-- 制作工艺总览 -->
+        <div class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12 slide-up" style="animation-delay: 0.1s">
+          <h3 class="text-2xl font-bold text-secondary mb-6 text-center">蜀锦织造全流程</h3>
+          <div class="grid md:grid-cols-5 gap-4 md:gap-6">
+            <div class="text-center p-4 bg-primary/5 rounded-lg">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h4 class="font-medium">原料准备</h4>
+            </div>
+            <div class="text-center p-4 bg-primary/5 rounded-lg">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-dye-force"></i>
+              </div>
+              <h4 class="font-medium">染色处理</h4>
+            </div>
+            <div class="text-center p-4 bg-primary/5 rounded-lg relative">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <h4 class="font-medium">纹样设计</h4>
+              <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold">
+                核心
+              </div>
+            </div>
+            <div class="text-center p-4 bg-primary/5 rounded-lg">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-loom"></i>
+              </div>
+              <h4 class="font-medium">上机织造</h4>
+            </div>
+            <div class="text-center p-4 bg-primary/5 rounded-lg">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <h4 class="font-medium">整烫成品</h4>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 材料详解 -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-white p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.2s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-thin-fabric mr-2 text-accent"></i>织造材料
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-semibold text-accent mb-2">蚕丝原料</h4>
+                <p class="text-gray-700">选用四川盆地特产的"家蚕"茧丝，经缫丝工艺制成生丝，再通过"浸泡-捶打-晾晒"制成熟丝，增强光泽与韧性</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-2">矿物染料</h4>
+                <p class="text-gray-700">传统蜀锦使用植物与矿物染料：
+                  <span class="text-primary">红花</span>染朱红，<span class="text-green-600">栀子</span>染明黄，<span class="text-indigo-600">蓝草</span>染青碧，<span class="text-purple-600">紫草</span>染绛紫，辅以<span class="text-amber-600">雌黄</span>、<span class="text-gray-700">赭石</span>等矿物颜料</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-2">特殊材质</h4>
+                <p class="text-gray-700">高档蜀锦会掺入金线、银线或孔雀羽线：金线通过捶打纯金箔成0.1mm薄片，再卷绕在蚕丝上制成"金皮线"</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 织机与技术 -->
+          <div class="bg-white p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.3s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-loom mr-2 text-accent"></i>织机与技术
+            </h3>
+            <div class="weaving-machine rounded-lg overflow-hidden mb-4">
+              <img src="楼织机.jpg" alt="蜀锦丁桥织机" class="w-full h-auto">
+              <div class="weaving-threads bg-[url('https://picsum.photos/100/1000?random=2')] bg-repeat-y bg-size-cover"></div>
+            </div>
+            <div class="space-y-3">
+              <p class="text-gray-700">蜀锦使用传统<strong class="text-primary">丁桥织机</strong>织造，这种木质织机拥有1700余年历史，其特点：</p>
+              <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                <li>机身长5-6米，高1.5米，由"机架-开口-引纬-打纬-送经"五大系统组成</li>
+                <li>采用"多综多蹑"技术，唐代已发展出1500多个提花程序，现代电子提花机即源于此</li>
+                <li>织造时需两人配合：上机工坐于机前投梭打纬，下机工踩动踏板控制经线开口</li>
+                <li>每日仅能织造5-6厘米，故有"寸锦寸金"之说</li>
+              </ul>
+              <p class="text-gray-700"><strong class="text-primary">创新技术</strong>：现代蜀锦融入电子提花技术，将传统纹样数字化，但核心手工技艺仍需传承</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 染色工艺 -->
+        <div class="bg-white p-6 md:p-8 rounded-lg shadow-md mb-12 slide-up" style="animation-delay: 0.4s">
+          <h3 class="text-xl font-bold text-secondary mb-6 text-center">传统染色工艺</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-3xl">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h4 class="font-medium mb-2">植物萃取</h4>
+              <p class="text-gray-700">将红花、蓝草等植物茎叶切碎，用石灰水或草木灰水浸泡萃取色素</p>
+            </div>
+            <div class="text-center">
+              <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-3xl">
+                <i class="fas fa-flask"></i>
+              </div>
+              <h4 class="font-medium mb-2">媒染固色</h4>
+              <p class="text-gray-700">加入明矾、皂矾等媒染剂，使色素与蚕丝蛋白结合，提高色牢度</p>
+            </div>
+            <div class="text-center">
+              <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-3xl">
+                <i class="fas fa-sun"></i>
+              </div>
+              <h4 class="font-medium mb-2">日光氧化</h4>
+              <p class="text-gray-700">染色后需在日光下晾晒氧化，如蓝色需反复浸染10-20次才能达到正色</p>
+            </div>
+          </div>
+          <div class="mt-8 grid grid-cols-4 gap-4">
+            <div class="h-16 rounded bg-[#8C1515] flex items-center justify-center text-white text-sm">朱红</div>
+            <div class="h-16 rounded bg-[#D4AF37] flex items-center justify-center text-white text-sm">明黄</div>
+            <div class="h-16 rounded bg-[#4361EE] flex items-center justify-center text-white text-sm">青碧</div>
+            <div class="h-16 rounded bg-[#7209B7] flex items-center justify-center text-white text-sm">绛紫</div>
+          </div>
+        </div>
+        
+        <!-- 图案纹样 -->
+        <div class="slide-up" style="animation-delay: 0.5s">
+          <h3 class="text-xl font-bold text-secondary mb-6 flex items-center">
+            <i class="fas fa-pattern mr-2 text-accent"></i>图案与纹样
+          </h3>
+          <p class="text-gray-700 mb-6 max-w-2xl">蜀锦纹样承载着丰富的文化寓意，从自然万象到神话传说，每一种图案都诉说着独特的故事</p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 纹样卡片1 -->
+            <div class="pattern-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="pattern-img h-48 overflow-hidden">
+                <img src="蜀锦纹样/龙纹.png" alt="龙纹蜀锦" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-secondary mb-2">龙纹</h4>
+                <p class="text-gray-700 mb-3">皇权象征，蜀锦龙纹多为"三爪龙"，融合巴蜀青铜文化中的神鸟元素，展现"飞龙在天"的威严</p>
+                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">等级纹样</span>
+              </div>
+            </div>
+            
+            <!-- 纹样卡片2 -->
+            <div class="pattern-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="pattern-img h-48 overflow-hidden">
+                <img src="蜀锦纹样/凤鸟纹.png" alt="凤鸟纹蜀锦" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-secondary mb-2">凤鸟纹</h4>
+                <p class="text-gray-700 mb-3">源自古蜀三星堆文化的神鸟崇拜，象征吉祥如意，常与莲花组合成"凤穿牡丹"图案</p>
+                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">吉祥纹样</span>
+              </div>
+            </div>
+            
+            <!-- 纹样卡片3 -->
+            <div class="pattern-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="pattern-img h-48 overflow-hidden">
+                <img src="蜀锦纹样/联珠纹.png" alt="联珠纹蜀锦" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-secondary mb-2">联珠纹</h4>
+                <p class="text-gray-700 mb-3">通过丝绸之路传入的波斯纹样，圆形联珠内常饰有狮、象等猛兽，展现文化交融</p>
+                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">外来纹样</span>
+              </div>
+            </div>
+            
+            <!-- 纹样卡片4 -->
+            <div class="pattern-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="pattern-img h-48 overflow-hidden">
+                <img src="蜀锦纹样/文字锦.png" alt="文字锦" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-secondary mb-2">文字锦</h4>
+                <p class="text-gray-700 mb-3">将"长乐未央""延年益寿"等吉祥文字织入锦中，汉代蜀锦"五星出东方利中国"为典型代表</p>
+                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">铭文纹样</span>
+              </div>
+            </div>
+            
+            <!-- 纹样卡片5 -->
+            <div class="pattern-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="pattern-img h-48 overflow-hidden">
+                <img src="蜀锦纹样/几何纹.png" alt="几何纹蜀锦" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-secondary mb-2">几何纹</h4>
+                <p class="text-gray-700 mb-3">以菱形、回纹、波纹等构成骨架，唐代蜀锦"陵阳公样"将几何纹与禽兽纹结合，开创团窠纹先河</p>
+                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">抽象纹样</span>
+              </div>
+            </div>
+            
+            <!-- 纹样卡片6 -->
+            <div class="pattern-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="pattern-img h-48 overflow-hidden">
+                <img src="蜀锦纹样/花鸟纹.png" alt="花鸟纹蜀锦" class="w-full h-full object-cover">
+              </div>
+              <div class="p-4">
+                <h4 class="font-bold text-lg text-secondary mb-2">花鸟纹</h4>
+                <p class="text-gray-700 mb-3">宋代蜀锦主流纹样，以芙蓉、海棠搭配雀鸟，展现巴蜀"天府之国"的自然生态之美</p>
+                <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">自然纹样</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 文化内涵与艺术价值部分 -->
+    <section id="culture" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center text-primary mb-12 slide-up">
+          <i class="fas fa-culture mr-3"></i>文化内涵与艺术价值
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <!-- 文化内涵 -->
+          <div class="bg-light p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.1s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-story mr-2 text-accent"></i>文化内涵
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <h4 class="font-semibold text-accent mb-2">锦囊妙计</h4>
+                <p class="text-gray-700">《三国演义》中诸葛亮给赵云的"锦囊妙计"，所用锦囊即蜀锦制成，体现蜀锦在军事文化中的象征意义</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-2">战乱中的雄心</h4>
+                <p class="text-gray-700">南宋陆游在《成都书事》中"濯锦江边两岸花，春风吹浪正淘沙"，借蜀锦织造隐喻抗金复国的壮志</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-2">太平盛世的包容</h4>
+                <p class="text-gray-700">唐代蜀锦融合西域、印度纹样，如"联珠对兽纹"锦，展现大唐帝国开放包容的文化气度</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 文学艺术 -->
+          <div class="bg-light p-6 rounded-lg shadow-md slide-up" style="animation-delay: 0.2s">
+            <h3 class="text-xl font-bold text-secondary mb-4 flex items-center">
+              <i class="fas fa-book-open mr-2 text-accent"></i>文学艺术
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <h4 class="font-semibold text-accent mb-2">诗词中的蜀锦</h4>
+                <p class="text-gray-700">
+                  <span class="text-primary">李白</span>"吴刀剪彩缝舞衣，明妆丽服夺春晖"，<br>
+                  <span class="text-primary">杜甫</span>"喧然名都会，吹箫间笙簧。锦城丝管日纷纷"，<br>
+                  <span class="text-primary">李商隐</span>"红楼隔雨相望冷，珠箔飘灯独自归"（珠箔即蜀锦帷幔）
+                </p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-accent mb-2">现代设计创新</h4>
+                <p class="text-gray-700">蜀锦纹样被应用于：
+                  <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li>2008年北京奥运会颁奖礼服"青花瓷"系列的领口纹样</li>
+                    <li>成都大运会吉祥物"蓉宝"的蜀锦披风设计</li>
+                    <li>现代家居装饰中的蜀锦靠垫、屏风</li>
+                    <li>高端时装品牌的定制面料</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 巴蜀文化 -->
+        <div class="bg-light p-6 md:p-8 rounded-lg shadow-md slide-up" style="animation-delay: 0.3s">
+          <h3 class="text-xl font-bold text-secondary mb-6 flex items-center justify-center">
+            <i class="fas fa-landmark mr-2 text-accent"></i>与巴蜀文化
+          </h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-scroll"></i>
+              </div>
+              <h4 class="font-medium mb-2">蜀学传承</h4>
+              <p class="text-gray-700">蜀锦纹样中的"忠孝节义"图案，与宋代蜀学"经世致用"思想相呼应，成为文化传播载体</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-star"></i>
+              </div>
+              <h4 class="font-medium mb-2">天数在蜀</h4>
+              <p class="text-gray-700">古蜀人认为"蜀"字象征蚕丛氏开国，蜀锦织造中"天工开物"的理念，体现巴蜀"顺应自然"的哲学思想</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 text-primary text-2xl">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <h4 class="font-medium mb-2">生活美学</h4>
+              <p class="text-gray-700">巴蜀民间"穿花衣、盖锦被"的习俗，将蜀锦融入婚丧嫁娶礼仪，形成独特的生活美学体系</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fas fa-thread mr-2 text-accent"></i>
+            蜀锦百科
+          </h3>
+          <p class="text-gray-400">探索千年蜀锦的文化密码，传承非物质文化遗产</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">快速链接</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#history" class="hover:text-accent transition">历史与起源</a></li>
+            <li><a href="#craft" class="hover:text-accent transition">工艺与制作</a></li>
+            <li><a href="#culture" class="hover:text-accent transition">文化内涵</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">联系我们</h4>
+          <p class="text-gray-400 mb-2"><i class="fas fa-envelope mr-2"></i> info@shujin.com</p>
+          <p class="text-gray-400"><i class="fas fa-phone mr-2"></i> +86 123 4567 8910</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2025 蜀锦百科 - 非物质文化遗产保护项目</p>
+      </div>
+      </div>
+      <!-- 添加返回主网页按钮 -->
+      <div class="mt-8 text-center">
+        <a href="index.html" class="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition">
+          返回主网页 <i class="fas fa-arrow-left ml-1"></i>
+        </a>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2025 蜀锦百科 - 非物质文化遗产保护项目</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 移动菜单切换
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // 滚动动画
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateElements = document.querySelectorAll('.slide-up, .fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      animateElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        observer.observe(element);
+      });
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动菜单
+          document.getElementById('mobile-menu').classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

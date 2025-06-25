@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜀锦文化 - 千年织锦的传承与创新</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 自定义样式 */
+        body {
+            font-family: 'Noto Serif SC', serif;
+            scroll-behavior: smooth;
+        }
+        .bg-shujin {
+            background-image: url('https://img.freepik.com/premium-photo/ancient-chinese-silk-fabric-embroidery-pattern_114579-1046.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .timeline-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 20px;
+        }
+        .timeline-item {
+            display: inline-block;
+            min-width: 300px;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: scale(1.05);
+        }
+        .craft-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .craft-animation {
+            width: 100%;
+            height: 200px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+        }
+        .craft-animation:hover {
+            background-color: #e9ecef;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9比例 */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .diy-canvas {
+            border: 2px dashed #6c757d;
+            border-radius: 8px;
+            cursor: crosshair;
+        }
+        .module {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .module.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-sm z-50 shadow-md transition-all duration-300" id="mainNav">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-red-600">蜀锦文化</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-red-600 transition-colors">首页</a>
+                <a href="#history" class="hover:text-red-600 transition-colors">历史溯源</a>
+                <a href="#encyclopedia" class="hover:text-red-600 transition-colors">蜀锦百科</a>
+                <a href="#craft" class="hover:text-red-600 transition-colors">工艺展示</a>
+                <a href="#传承" class="hover:text-red-600 transition-colors">现代传承</a>
+                <a href="#diy" class="hover:text-red-600 transition-colors">游戏DIY</a>
+                <a href="#quiz" class="hover:text-red-600 transition-colors">知识问答</a>
+            </div>
+            <button class="md:hidden text-gray-600" id="menuToggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white w-full border-t" id="mobileMenu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="py-2 hover:bg-gray-100 px-3 rounded">首页</a>
+                <a href="#history" class="py-2 hover:bg-gray-100 px-3 rounded">历史溯源</a>
+                <a href="#encyclopedia" class="py-2 hover:bg-gray-100 px-3 rounded">蜀锦百科</a>
+                <a href="#craft" class="py-2 hover:bg-gray-100 px-3 rounded">工艺展示</a>
+                <a href="#传承" class="py-2 hover:bg-gray-100 px-3 rounded">现代传承</a>
+                <a href="#diy" class="py-2 hover:bg-gray-100 px-3 rounded">游戏DIY</a>
+                <a href="#quiz" class="py-2 hover:bg-gray-100 px-3 rounded">知识问答</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页模块 -->
+    <section id="home" class="bg-shujin h-screen flex items-center justify-center text-center module">
+        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-red-700 mb-4">蜀锦文化 - 千年织锦的艺术传承</h1>
+            <p class="text-xl md:text-2xl text-gray-800 mb-8">穿越千年时光，感受中国传统织锦艺术的魅力</p>
+            <a href="#history" class="inline-block bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-red-700 transition-colors shadow-lg">
+                探索蜀锦文化 <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 历史溯源模块 -->
+    <section id="history" class="py-20 bg-gray-50 module">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-red-700">
+                <i class="fas fa-history mr-3"></i>历史溯源
+            </h2>
+            <div class="timeline-container">
+                <!-- 战国至秦汉时期 -->
+                <div class="timeline-item bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">战国至秦汉时期：起源与初步发展</h3>
+                    <p class="text-gray-700 mb-4">蜀锦起源于战国时期，秦汉时已具规模，官府设置"锦官"管理织造，成都因此得名"锦官城"。</p>
+                    <div class="mt-4">
+                        <h4 class="font-medium text-gray-700 mb-2">典型作品：</h4>
+                        <img src="历史溯源/战国.png" alt="秦汉蜀锦" class="w-full h-40 object-cover rounded">
+                        <p class="text-sm text-gray-600 mt-2">秦汉时期的"经锦"，以几何纹和动物纹为主要图案</p>
+                    </div>
+                </div>
+
+                <!-- 三国时期 -->
+                <div class="timeline-item bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">三国时期：鼎盛与外销</h3>
+                    <p class="text-gray-700 mb-4">三国时期蜀锦产业达到鼎盛，成为蜀汉政权的重要财政来源，通过丝绸之路远销西域和中亚。</p>
+                    <div class="mt-4">
+                        <h4 class="font-medium text-gray-700 mb-2">典型作品：</h4>
+                        <img src="历史溯源/三国.png" alt="三国蜀锦" class="w-full h-40 object-cover rounded">
+                        <p class="text-sm text-gray-600 mt-2">三国时期的"联珠纹锦"，融合了中原与西域的艺术风格</p>
+                    </div>
+                </div>
+
+                <!-- 魏晋南北朝至隋唐时期 -->
+                <div class="timeline-item bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">魏晋南北朝至隋唐时期：繁荣与创新</h3>
+                    <p class="text-gray-700 mb-4">隋唐时期蜀锦工艺进一步发展，出现了纬线起花的"纬锦"，图案更加丰富，色彩更加艳丽。</p>
+                    <div class="mt-4">
+                        <h4 class="font-medium text-gray-700 mb-2">典型作品：</h4>
+                        <img src="历史溯源/唐.png" alt="隋唐蜀锦" class="w-full h-40 object-cover rounded">
+                        <p class="text-sm text-gray-600 mt-2">唐代"陵阳公样"蜀锦，以对称的花鸟纹为特色</p>
+                    </div>
+                </div>
+
+                <!-- 宋元时期 -->
+                <div class="timeline-item bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">宋元时期：衰落与延续</h3>
+                    <p class="text-gray-700 mb-4">宋元时期，由于战乱和经济重心南移，蜀锦产业一度衰落，但仍有部分技艺得以延续。</p>
+                    <div class="mt-4">
+                        <h4 class="font-medium text-gray-700 mb-2">典型作品：</h4>
+                        <img src="历史溯源/宋.png" alt="宋元蜀锦" class="w-full h-40 object-cover rounded">
+                        <p class="text-sm text-gray-600 mt-2">宋代"八达晕"锦，以复杂的几何骨架和花卉纹为特征</p>
+                    </div>
+                </div>
+
+                <!-- 明清时期 -->
+                <div class="timeline-item bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">明清时期：复兴与巅峰</h3>
+                    <p class="text-gray-700 mb-4">明清时期蜀锦迎来复兴，宫廷对蜀锦的需求增加，工艺达到历史巅峰，形成了独特的艺术风格。</p>
+                    <div class="mt-4">
+                        <h4 class="font-medium text-gray-700 mb-2">典型作品：</h4>
+                        <img src="历史溯源/清.png" alt="明清蜀锦" class="w-full h-40 object-cover rounded">
+                        <p class="text-sm text-gray-600 mt-2">明代"缠枝莲"锦和清代"龙纹"锦，代表了宫廷织锦的最高水平</p>
+                    </div>
+                </div>
+
+                <!-- 近代至现代 -->
+                <div class="timeline-item bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-red-600 mb-3">近代至现代：传承与创新</h3>
+                    <p class="text-gray-700 mb-4">近代以来，蜀锦面临传承危机，但通过非遗保护和创新设计，蜀锦在现代社会中焕发新的活力。</p>
+                    <div class="mt-4">
+                        <h4 class="font-medium text-gray-700 mb-2">典型作品：</h4>
+                        <img src="历史溯源/现代.jpg" alt="现代蜀锦" class="w-full h-40 object-cover rounded">
+                        <p class="text-sm text-gray-600 mt-2">现代创新蜀锦作品，融合传统纹样与现代设计理念</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 蜀锦百科模块 -->
+    <section id="encyclopedia" class="py-20 bg-white module">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-red-700">
+                <i class="fas fa-book-open mr-3"></i>蜀锦百科
+            </h2>
+            <div class="bg-gray-50 p-8 rounded-xl shadow-md text-center max-w-3xl mx-auto">
+                <p class="text-lg mb-6">蜀锦是中国传统织锦工艺的代表之一，有着两千多年的历史，被判为"东方瑰宝"。</p>
+                <a href="shujin_encyclopedia.html" class="inline-block bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-red-700 transition-colors shadow-lg">
+                    进入蜀锦百科 <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <p class="text-sm text-gray-500 mt-4"></p>
+            </div>
+        </div>
+    </section>
+
+        <!-- 工艺展示模块 -->
+        <section id="craft" class="py-20 bg-gray-50 module">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-red-700">
+                    <i class="fas fa-tools mr-3"></i>工艺展示
+                </h2>
+                <div class="grid grid-cols-2 gap-8">
+                    <!-- 左侧：传统工艺 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-red-600 mb-3">传统工艺</h3>
+                            <p class="text-gray-700 mb-4">蜀锦传统工艺包括设计、挑花、结本、上机织造等复杂流程，凝聚了古代工匠的智慧和技艺。</p>
+                        </div>
+                        <div class="relative aspect-video bg-gray-100 overflow-hidden">
+                            <img src="小花楼织机演示动画.gif" alt="小花楼织机演示" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- 右侧：现代工艺 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-red-600 mb-3">现代工艺</h3>
+                            <p class="text-gray-700 mb-4">现代科技与传统工艺结合，在保持蜀锦传统特色的同时，提升了生产效率和设计可能性。</p>
+                        </div>
+                        <div class="relative aspect-video bg-gray-100 overflow-hidden">
+                            <img src="现代工艺.gif" alt="现代工艺演示" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 下方：大师讲述 -->
+                <div class="mt-8 mx-auto max-w-2xl">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-red-600 mb-3">大师讲述</h3>
+                            <p class="text-gray-700 mb-4">蜀锦非遗传承人讲述蜀锦工艺的历史传承与现代创新，分享蜀锦织造的奥秘和故事。</p>
+                        </div>
+                        <div class="relative aspect-video bg-gray-900 overflow-hidden">
+                            <video controls class="w-full h-full object-cover">
+                                <source src="传承人讲展｜贺斌：千丝万缕织造蜀锦千古绝色.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放
+                            </video>
+                        </div>
+                </div>
+            </div>
+        </section>
+    
+
+    <!-- 现代传承模块 -->
+    <section id="传承" class="py-20 bg-white module">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-red-700">
+                <i class="fas fa-seedling mr-3"></i>现代传承
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 现代应用 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center">
+                        <i class="fas fa-clothing mr-2"></i>现代应用
+                    </h3>
+                    <p class="text-gray-700 mb-4">蜀锦在现代社会中的创新应用，融入时尚、家居和文创产品</p>
+                    <a href="modern_application.html" class="inline-block bg-red-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-red-700 transition-colors">
+                        查看更多 <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                    <p class="text-sm text-gray-500 mt-3"></p>
+                </div>
+
+                <!-- IP联动 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center">
+                        <i class="fas fa-robot mr-2"></i>IP联动
+                    </h3>
+                    <p class="text-gray-700 mb-4">蜀锦与动漫、游戏、影视等IP的跨界合作，让传统文化焕发新活力</p>
+                    <div class="mt-4 grid grid-cols-2 gap-2">
+                        <img src="IP联动/「PandaPeace」联合非遗创新品牌「锦衣天承」.jpg" alt="IP联动1" class="w-full h-24 object-cover rounded">
+                        <img src="IP联动/瑞幸非遗联名熊猫蜀锦杯.jpg" alt="IP联动2" class="w-full h-24 object-cover rounded">
+                        <img src="IP联动/人工智能＋非遗创新实验室.jpg" alt="IP联动3" class="w-full h-24 object-cover rounded">
+                        <img src="IP联动/遮天.jpg" alt="IP联动4" class="w-full h-24 object-cover rounded">
+                    </div>
+                </div>
+
+                <!-- 城市锦纹 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center">
+                        <i class="fas fa-city mr-2"></i>城市锦纹
+                    </h3>
+                    <p class="text-gray-700 mb-4">蜀锦纹样在城市建筑、公共空间和城市形象设计中的应用</p>
+                    <div class="mt-4">
+                        <img src="东安阁.jpg" alt="城市锦纹" class="w-full h-40 object-cover rounded mb-2">
+                        <p class="text-sm text-gray-600">成都地标建筑中的蜀锦元素应用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏DIY模块 -->
+    <section id="diy" class="py-20 bg-gray-50 module">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-red-700">
+                <i class="fas fa-paint-brush mr-3"></i>游戏中DIY
+            </h2>
+            <div class="bg-white p-8 rounded-xl shadow-md max-w-4xl mx-auto">
+                <p class="text-center text-lg mb-6">发挥你的创意，设计属于你的蜀锦纹样！</p>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-2/3">
+                        <canvas id="diyCanvas" class="diy-canvas w-full h-64 md:h-80"></canvas>
+                    </div>
+                    <div class="w-full md:w-1/3 flex flex-col gap-4">
+                        <div>
+                            <h4 class="font-medium mb-2">选择颜色</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="color-btn w-8 h-8 rounded-full bg-red-600" data-color="#e63946"></button>
+                                <button class="color-btn w-8 h-8 rounded-full bg-blue-600" data-color="#1d3557"></button>
+                                <button class="color-btn w-8 h-8 rounded-full bg-green-600" data-color="#457b9d"></button>
+                                <button class="color-btn w-8 h-8 rounded-full bg-yellow-600" data-color="#f1faee"></button>
+                                <button class="color-btn w-8 h-8 rounded-full bg-purple-600" data-color="#a8dadc"></button>
+                                <button class="color-btn w-8 h-8 rounded-full bg-gray-600" data-color="#2b2d42"></button>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2">选择图案</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="pattern-btn w-10 h-10 rounded bg-gray-100" data-pattern="circle">
+                                    <i class="fas fa-circle"></i>
+                                </button>
+                                <button class="pattern-btn w-10 h-10 rounded bg-gray-100" data-pattern="square">
+                                    <i class="fas fa-square"></i>
+                                </button>
+                                <button class="pattern-btn w-10 h-10 rounded bg-gray-100" data-pattern="diamond">
+                                    <i class="fas fa-diamond"></i>
+                                </button>
+                                <button class="pattern-btn w-10 h-10 rounded bg-gray-100" data-pattern="star">
+                                    <i class="fas fa-star"></i>
+                                </button>
+                                <button class="pattern-btn w-10 h-10 rounded bg-gray-100" data-pattern="flower">
+                                    <i class="fas fa-flower"></i>
+                                </button>
+                                <button class="pattern-btn w-10 h-10 rounded bg-gray-100" data-pattern="dragon">
+                                    <i class="fas fa-dragon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button id="clearBtn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition-colors">
+                                <i class="fas fa-eraser mr-1"></i> 清空画布
+                            </button>
+                            <button id="saveBtn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors">
+                                <i class="fas fa-save mr-1"></i> 保存设计
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 知识问答模块 -->
+    <section id="quiz" class="py-20 bg-white module">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-red-700">
+                <i class="fas fa-question-circle mr-3"></i>知识问答
+            </h2>
+            <div class="bg-gray-50 p-8 rounded-xl shadow-md max-w-3xl mx-auto">
+                <p class="text-center text-lg mb-6">测试你对蜀锦文化的了解程度，共有5道题</p>
+                <form id="quizForm">
+                    <!-- 问题1 -->
+                    <div class="mb-8 pb-4 border-b">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">1. 蜀锦的主要产地是哪里？</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="q1" value="a" class="mr-2">
+                                <span>A. 成都</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q1" value="b" class="mr-2">
+                                <span>B. 苏州</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q1" value="c" class="mr-2">
+                                <span>C. 杭州</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q1" value="d" class="mr-2">
+                                <span>D. 南京</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 问题2 -->
+                    <div class="mb-8 pb-4 border-b">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">2. 蜀锦在哪个朝代达到鼎盛时期？</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="q2" value="a" class="mr-2">
+                                <span>A. 战国</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q2" value="b" class="mr-2">
+                                <span>B. 三国</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q2" value="c" class="mr-2">
+                                <span>C. 唐代</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q2" value="d" class="mr-2">
+                                <span>D. 明代</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 问题3 -->
+                    <div class="mb-8 pb-4 border-b">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">3. 蜀锦的传统工艺中，"结本"指的是什么？</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="q3" value="a" class="mr-2">
+                                <span>A. 设计图案</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q3" value="b" class="mr-2">
+                                <span>B. 挑选丝线</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q3" value="c" class="mr-2">
+                                <span>C. 制作花本</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q3" value="d" class="mr-2">
+                                <span>D. 上机织造</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 问题4 -->
+                    <div class="mb-8 pb-4 border-b">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">4. 蜀锦的哪种纹样在唐代非常流行？</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="q4" value="a" class="mr-2">
+                                <span>A. 龙纹</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q4" value="b" class="mr-2">
+                                <span>B. 凤纹</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q4" value="c" class="mr-2">
+                                <span>C. 陵阳公样</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q4" value="d" class="mr-2">
+                                <span>D. 八达晕</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 问题5 -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-red-600 mb-4">5. 蜀锦在哪一年被列入国家级非物质文化遗产名录？</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="q5" value="a" class="mr-2">
+                                <span>A. 2006年</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q5" value="b" class="mr-2">
+                                <span>B. 2008年</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q5" value="c" class="mr-2">
+                                <span>C. 2010年</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="q5" value="d" class="mr-2">
+                                <span>D. 2012年</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-red-700 transition-colors shadow-lg">
+                            提交答案 <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
+                <div id="quizResult" class="mt-6 hidden text-center"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-red-800 text-white py-10">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg mb-4">蜀锦文化融媒体运营平台</p>
+            <p class="mb-6">传承千年织锦艺术，弘扬中华传统文化</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-white hover:text-red-300 transition-colors">
+                    <i class="fab fa-weixin text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-red-300 transition-colors">
+                    <i class="fab fa-weibo text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-red-300 transition-colors">
+                    <i class="fab fa-tiktok text-2xl"></i>
+                </a>
+                <a href="#" class="text-white hover:text-red-300 transition-colors">
+                    <i class="fab fa-youtube text-2xl"></i>
+                </a>
+            </div>
+            <p class="mt-6 text-gray-300">© 2025 蜀锦文化保护中心. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 导航栏滚动效果
+        const mainNav = document.getElementById('mainNav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('py-2');
+                mainNav.classList.remove('py-3');
+            } else {
+                mainNav.classList.add('py-3');
+                mainNav.classList.remove('py-2');
+            }
+        });
+        
+        // 模块滚动显示动画
+        const modules = document.querySelectorAll('.module');
+        
+        function checkVisibility() {
+            modules.forEach(module => {
+                const moduleTop = module.getBoundingClientRect().top;
+                const moduleVisible = 150;
+                
+                if (moduleTop < window.innerHeight - moduleVisible) {
+                    module.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+        
+        // DIY画布功能
+        const canvas = document.getElementById('diyCanvas');
+        const ctx = canvas.getContext('2d');
+        const colorBtns = document.querySelectorAll('.color-btn');
+        const patternBtns = document.querySelectorAll('.pattern-btn');
+        const clearBtn = document.getElementById('clearBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        
+        let currentColor = '#e63946';
+        let currentPattern = 'circle';
+        let isDrawing = false;
+        let lastX, lastY;
+        
+        // 初始化画布
+        function initCanvas() {
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+        }
+        
+        initCanvas();
+        
+        // 选择颜色
+        colorBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentColor = btn.dataset.color;
+                ctx.strokeStyle = currentColor;
+                colorBtns.forEach(b => b.classList.remove('ring-2', 'ring-red-500'));
+                btn.classList.add('ring-2', 'ring-red-500');
+            });
+        });
+        
+        // 选择图案
+        patternBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentPattern = btn.dataset.pattern;
+                patternBtns.forEach(b => b.classList.remove('ring-2', 'ring-red-500'));
+                btn.classList.add('ring-2', 'ring-red-500');
+            });
+        });
+        
+        // 绘制图案
+        function drawPattern(x, y) {
+            ctx.beginPath();
+            
+            switch(currentPattern) {
+                case 'circle':
+                    ctx.arc(x, y, 15, 0, Math.PI * 2);
+                    break;
+                case 'square':
+                    ctx.rect(x-15, y-15, 30, 30);
+                    break;
+                case 'diamond':
+                    ctx.moveTo(x, y-15);
+                    ctx.lineTo(x+15, y);
+                    ctx.lineTo(x, y+15);
+                    ctx.lineTo(x-15, y);
+                    ctx.closePath();
+                    break;
+                case 'star':
+                    const r1 = 5;
+                    const r2 = 15;
+                    const points = 5;
+                    ctx.moveTo(x, y - r2);
+                    for (let i = 0; i < points; i++) {
+                        const angle1 = Math.PI / 2 + i * 2 * Math.PI / points;
+                        const angle2 = Math.PI / 2 + (i + 0.5) * 2 * Math.PI / points;
+                        ctx.lineTo(x + Math.cos(angle1) * r2, y + Math.sin(angle1) * r2);
+                        ctx.lineTo(x + Math.cos(angle2) * r1, y + Math.sin(angle2) * r1);
+                    }
+                    ctx.closePath();
+                    break;
+                case 'flower':
+                    const petals = 6;
+                    for (let i = 0; i < petals; i++) {
+                        const angle = i * 2 * Math.PI / petals;
+                        ctx.beginPath();
+                        ctx.arc(x, y, 15, angle, angle + Math.PI / petals);
+                        ctx.fill();
+                    }
+                    ctx.beginPath();
+                    ctx.arc(x, y, 5, 0, Math.PI * 2);
+                    ctx.fillStyle = currentColor;
+                    ctx.fill();
+                    break;
+                case 'dragon':
+                    // 简化的龙形图案
+                    ctx.moveTo(x, y);
+                    ctx.bezierCurveTo(x+20, y-10, x+30, y+10, x+40, y-5);
+                    ctx.bezierCurveTo(x+50, y+20, x+60, y-15, x+70, y+5);
+                    break;
+            }
+            
+            ctx.strokeStyle = currentColor;
+            ctx.fillStyle = currentColor;
+            ctx.fill();
+            ctx.stroke();
+        }
+        
+        // 鼠标事件
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            lastX = e.clientX - rect.left;
+            lastY = e.clientY - rect.top;
+            drawPattern(lastX, lastY);
+        });
+        
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            drawPattern(x, y);
+            lastX = x;
+            lastY = y;
+        });
+        
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+        
+        canvas.addEventListener('mouseleave', () => {
+            isDrawing = false;
+        });
+        
+        // 清空画布
+        clearBtn.addEventListener('click', initCanvas);
+        
+        // 保存设计
+        saveBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'shujin_design_' + new Date().getTime() + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            alert('你的蜀锦设计已保存！');
+        });
+        
+        // 知识问答功能
+        const quizForm = document.getElementById('quizForm');
+        const quizResult = document.getElementById('quizResult');
+        
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const answers = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'c',
+                q4: 'c',
+                q5: 'a'
+            };
+            
+            let score = 0;
+            
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`)?.value;
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+            }
+            
+            quizResult.classList.remove('hidden');
+            
+            if (score >= 4) {
+                quizResult.innerHTML = `
+                    <div class="bg-green-100 text-green-800 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold mb-2"><i class="fas fa-trophy text-green-600 mr-2"></i>恭喜你！</h3>
+                        <p class="mb-2">你答对了 ${score} 道题，获得"蜀锦文化达人"称号！</p>
+                        <p>继续探索蜀锦文化，传承千年艺术！</p>
+                    </div>
+                `;
+            } else if (score >= 2) {
+                quizResult.innerHTML = `
+                    <div class="bg-yellow-100 text-yellow-800 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold mb-2"><i class="fas fa-star text-yellow-600 mr-2"></i>不错哦！</h3>
+                        <p class="mb-2">你答对了 ${score} 道题，对蜀锦文化有一定了解！</p>
+                        <p>继续学习，深入了解蜀锦的历史与工艺！</p>
+                    </div>
+                `;
+            } else {
+                quizResult.innerHTML = `
+                    <div class="bg-red-100 text-red-800 p-4 rounded-lg">
+                        <h3 class="text-xl font-bold mb-2"><i class="fas fa-book-open text-red-600 mr-2"></i>继续努力！</h3>
+                        <p class="mb-2">你答对了 ${score} 道题，对蜀锦文化还需要更多了解！</p>
+                        <p>回到前面的模块，学习更多蜀锦知识吧！</p>
+                    </div>
+                `;
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
